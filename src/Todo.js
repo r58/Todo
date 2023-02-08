@@ -32,6 +32,20 @@ export default function App() {
     };
     setTodos([...todos, alltodo]);
   };
+  
+  const sortTodoListByName = (items) => {
+    return items.sort((a, b) => {
+      if (a.name < b.name) {
+        return -1;
+      }
+      if (a.name > b.name) {
+        return 1;
+      }
+      return 0;
+    });
+  };
+
+  const sorteditems = sortTodoListByName(todos);
 
   const remove = (index) => {
     const updatedtodos = todos.filter((elem) => {
@@ -93,7 +107,7 @@ export default function App() {
           <th>Edit</th>
         </tr>
 
-        {todos.map((item) => {
+        {sorteditems.map((item) => {
           return (
             <tr key={item.id}>
               <th>{item.name}</th>
